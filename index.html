@@ -1,67 +1,229 @@
-```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trust Wallet URL Test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trust Wallet Guard | Official On-Chain USDT Verification</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        trust: {
+                            blue: '#0500FF',
+                            dark: '#030712',
+                            card: '#0B0F19',
+                            border: '#1F2937',
+                            accent: '#10B981'
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'scan-line': 'scan 2.5s linear infinite',
+                    },
+                    keyframes: {
+                        scan: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(1000%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- FontAwesome & Google Fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #111;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #030712;
+            color: #f3f4f6;
+        }
 
-    .box {
-      text-align: center;
-      padding: 30px;
-    }
+        .hero-glow {
+            background: radial-gradient(circle at 50% -10%, rgba(5, 0, 255, 0.22) 0%, rgba(16, 185, 129, 0.05) 45%, rgba(3, 7, 18, 0) 70%);
+        }
 
-    button {
-      border: 0;
-      padding: 14px 22px;
-      border-radius: 10px;
-      background: #3375bb;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-    }
+        .glass-card {
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
 
-    button:hover {
-      opacity: 0.9;
-    }
-  </style>
+        .glass-card:hover {
+            border-color: rgba(5, 0, 255, 0.4);
+            box-shadow: 0 0 30px -5px rgba(5, 0, 255, 0.2);
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, #0500FF 0%, #000280 100%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-gradient:hover {
+            box-shadow: 0 8px 25px -5px rgba(5, 0, 255, 0.5);
+            transform: translateY(-1px);
+        }
+
+        .btn-gradient:active {
+            transform: translateY(1px);
+        }
+    </style>
 </head>
+<body class="min-h-screen flex flex-col justify-between items-center p-4 sm:p-6 hero-glow antialiased selection:bg-blue-600 selection:text-white">
 
-<body>
+    <!-- Navbar Header -->
+    <header class="w-full max-w-lg flex justify-between items-center py-4 px-2">
+        <div class="flex items-center space-x-3">
+            <div class="relative">
+                <img src="https://vectorseek.com/wp-content/uploads/2024/07/Trust-Wallet-Shield-Logo-Vector-Logo-Vector.svg-.png" 
+                     alt="Trust Wallet" class="w-9 h-9 object-contain drop-shadow-[0_0_8px_rgba(5,0,255,0.5)]">
+            </div>
+            <div>
+                <div class="flex items-center gap-1.5">
+                    <span class="font-extrabold text-base tracking-tight text-white">Trust Wallet</span>
+                    <span class="bg-blue-500/10 text-blue-400 text-[10px] font-bold px-1.5 py-0.5 rounded border border-blue-500/20">GUARD</span>
+                </div>
+                <span class="text-[11px] text-gray-400 font-medium block -mt-0.5">Automated Scam Detection Engine</span>
+            </div>
+        </div>
+        
+        <!-- Live Status Indicator -->
+        <div class="flex items-center gap-2 bg-emerald-950/40 border border-emerald-500/30 px-3 py-1.5 rounded-full">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span class="text-[11px] font-semibold text-emerald-400 tracking-wide">Node Active</span>
+        </div>
+    </header>
 
-  <div class="box">
-    <h2>Trust Wallet Test</h2>
-    <p>Button dabao aur dekho Trust Wallet open hota hai ya nahi.</p>
+    <!-- Main Card Container -->
+    <main class="w-full max-w-lg glass-card rounded-3xl p-6 sm:p-8 my-auto shadow-2xl relative overflow-hidden">
+        
+        <!-- Subtle Scanline Effect for Security Vibe -->
+        <div class="absolute inset-0 pointer-events-none opacity-5 overflow-hidden">
+            <div class="w-full h-12 bg-gradient-to-b from-blue-500 to-transparent animate-scan-line"></div>
+        </div>
 
-    <button onclick="openTrustWallet()">
-      Open in Trust Wallet
-    </button>
-  </div>
+        <!-- Security Warning Banner -->
+        <div class="bg-amber-950/30 border border-amber-500/30 rounded-2xl p-4 mb-6 relative">
+            <div class="flex items-start gap-3.5">
+                <div class="p-2.5 bg-amber-500/10 rounded-xl text-amber-400 shrink-0 border border-amber-500/20">
+                    <i class="fa-solid fa-shield-triangle-warning text-lg"></i>
+                </div>
+                <div class="space-y-1">
+                    <h2 class="text-amber-300 font-bold text-xs uppercase tracking-wider flex items-center gap-2">
+                        Security Notice: Fake USDT Alert
+                    </h2>
+                    <p class="text-xs text-gray-300/90 leading-relaxed font-normal">
+                        Malicious actors issue unauthorized smart contracts using the name <strong class="text-white">USDT</strong>. Run a deep-contract inspection to verify real token reserves and blacklist status.
+                    </p>
+                </div>
+            </div>
+        </div>
 
-  <script>
-    function openTrustWallet() {
-      const coinId = 195;
-      const siteUrl = "https://trc-send-safe.alc.onl/2/";
+        <!-- Section Title & Live Stats -->
+        <div class="text-center mb-6">
+            <h1 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Inspect Token Authenticity</h1>
+            <p class="text-xs text-gray-400 mt-1.5">Direct Web3 DeepLink Protocol for Trust Wallet Application</p>
+        </div>
 
-      const trustUrl =
-        `trust://open_url?coin_id=${coinId}&url=${encodeURIComponent(siteUrl)}`;
+        <!-- Verification Cards Group -->
+        <div class="space-y-4">
+            
+            <!-- Network 1: BNB BEP20 -->
+            <div class="bg-gray-900/60 border border-gray-800 rounded-2xl p-4 transition-all duration-300 hover:border-blue-500/40">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center space-x-3">
+                        <img src="https://logospng.org/download/binance-coin/logo-binance-coin-1536.png" 
+                             alt="BNB Chain" class="w-9 h-9 object-contain rounded-full bg-black/50 p-1 border border-yellow-500/30">
+                        <div>
+                            <div class="flex items-center gap-1.5">
+                                <h3 class="font-bold text-white text-sm">BNB Smart Chain</h3>
+                                <span class="text-[10px] bg-yellow-500/10 text-yellow-400 font-semibold px-1.5 py-0.2 rounded border border-yellow-500/20">BEP20</span>
+                            </div>
+                            <p class="text-[11px] text-gray-400">Deep Scanner for BSC Token Minting</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-circle-check text-blue-500 text-sm" title="Verified Protocol"></i>
+                </div>
 
-      window.location.href = trustUrl;
-    }
-  </script>
+                <a href="trust://open_url?coin_id=60&url=https://bscscan.com/" 
+                   class="button btn-gradient w-full py-3 px-5 rounded-xl flex items-center justify-between text-xs font-semibold text-white group">
+                    <span class="flex items-center gap-2">
+                        <i class="fa-solid fa-magnifying-glass-dollar text-blue-200"></i>
+                        Verify BEP20 USDT Status
+                    </span>
+                    <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+
+            <!-- Network 2: TRON TRC20 -->
+            <div class="bg-gray-900/60 border border-gray-800 rounded-2xl p-4 transition-all duration-300 hover:border-red-500/40">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center space-x-3">
+                        <img src="https://cdn-icons-png.flaticon.com/512/12114/12114250.png" 
+                             alt="TRON Network" class="w-9 h-9 object-contain rounded-full bg-black/50 p-1 border border-red-500/30">
+                        <div>
+                            <div class="flex items-center gap-1.5">
+                                <h3 class="font-bold text-white text-sm">TRON Network</h3>
+                                <span class="text-[10px] bg-red-500/10 text-red-400 font-semibold px-1.5 py-0.2 rounded border border-red-500/20">TRC20</span>
+                            </div>
+                            <p class="text-[11px] text-gray-400">Blacklist & Scam Address Check</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-shield-check text-red-400 text-sm" title="Verified Protocol"></i>
+                </div>
+
+                <a href="trust://open_url?coin_id=195&url=https://tronscan.org" 
+                   class="button w-full py-3 px-5 rounded-xl flex items-center justify-between text-xs font-semibold text-white bg-red-600 hover:bg-red-700 transition-all duration-300 shadow-lg shadow-red-900/20 group">
+                    <span class="flex items-center gap-2">
+                        <i class="fa-solid fa-shield-halved text-red-200"></i>
+                        Verify TRC20 USDT Status
+                    </span>
+                    <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Trust Signals Grid -->
+        <div class="mt-6 pt-5 border-t border-gray-800/80 grid grid-cols-3 gap-2 text-center">
+            <div class="bg-gray-950/60 p-2.5 rounded-xl border border-gray-800/50">
+                <i class="fa-solid fa-lock text-blue-400 text-xs mb-1 block"></i>
+                <span class="text-[10px] text-gray-300 font-medium block">Non-Custodial</span>
+            </div>
+            <div class="bg-gray-950/60 p-2.5 rounded-xl border border-gray-800/50">
+                <i class="fa-solid fa-bolt text-emerald-400 text-xs mb-1 block"></i>
+                <span class="text-[10px] text-gray-300 font-medium block">Instant Audit</span>
+            </div>
+            <div class="bg-gray-950/60 p-2.5 rounded-xl border border-gray-800/50">
+                <i class="fa-solid fa-user-shield text-indigo-400 text-xs mb-1 block"></i>
+                <span class="text-[10px] text-gray-300 font-medium block">Zero Auth Needed</span>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer Security Trust Badge -->
+    <footer class="w-full max-w-lg text-center py-4 space-y-2">
+        <div class="inline-flex items-center gap-2 text-[11px] text-gray-400 bg-gray-900/80 px-4 py-1.5 rounded-full border border-gray-800">
+            <i class="fa-solid fa-circle-check text-emerald-400"></i>
+            <span>Encrypted Web3 Session | Official Wallet Redirect</span>
+        </div>
+        <p class="text-[10px] text-gray-500">
+            &copy; 2026 Trust Wallet Security Initiative. Designed for user protection.
+        </p>
+    </footer>
 
 </body>
 </html>
-```
